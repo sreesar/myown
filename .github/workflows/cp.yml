@@ -1,0 +1,8 @@
+ - name: build and deploy    
+      run: |
+          ng build
+          git clone https://.:${{ secrets.API_TOKEN_GITHUB }}@github.com/[.github/workflows/blank.yml]/[myown].git
+          copy dist
+          git add public/client/dist
+          git commit -m "Automatic deploy of dist"
+          git push target [branch_name]
