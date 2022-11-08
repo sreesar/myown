@@ -18,7 +18,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.PAT }}
       with:
         source_file: './.github/workflows/test.yml'
-        destination_repo: 'project'
+        destination_repo: 'sreesar/project'
         destination_folder: 'project/.github/workflows/'
         user_email: 'ninanarmatha0389@gmail.com'
         user_name: 'sreesar'
