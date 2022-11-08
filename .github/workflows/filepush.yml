@@ -10,7 +10,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Pushes test folder
-      uses: new/copy_folder_to_another_repo_action@1.0.0
+      uses: https://github.com/sreesar/myown.git/copy_folder_to_another_repo_action@1.0.0
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT }}
       with:
