@@ -1,8 +1,14 @@
- - name: build and deploy    
-      run: |
-          ng build
-          git clone https://.:${{ secrets.API_TOKEN_GITHUB }}@github.com/sample/myown.git
-          copy dist
-          git add public/client/dist
-          git commit -m "Automatic deploy of dist"
-          git push target [branch_name]
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  label_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+          ISSUE_URL: ${{ https://github.com/sreesar/project.git }}
+        run: |
+          gh issue edit $ISSUE_URL --add-label "triage"
