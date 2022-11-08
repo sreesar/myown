@@ -1,0 +1,26 @@
+on: [push, workflow_dispatch]
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    name: "Trigger Project Test"
+    steps:
+    - uses: passeidireto/trigger-external-workflow-action@main
+      env:
+        PAYLOAD_AUTHOR: ${{ github.author }}
+        PAYLOAD_REVISION: "3"
+      with:
+        repository: my-myown/my-project
+        event: doc_update
+        github_pat: ${{ secrets.pat_with_access }}
+
+
+# workflow.yml
+# a lot code at the top
+# ...
+release:
+  steps:
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        repository: ${{ secrets.myown }}/${{ secrets.project }}
+        token: ${{ secrets.ACTIONS_kEY }}
