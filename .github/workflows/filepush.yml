@@ -1,7 +1,10 @@
 name: Push File
 
-on: push
-
+on: 
+ workflow_dispatch: {}
+ push:
+  branches: 
+   - main
 jobs:
   copy-file:
     runs-on: ubuntu-latest
@@ -10,13 +13,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Pushes test folder
-      uses: sreesar/myown/new@1.0.0
+      uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.PAT }}
       with:
-        source_folder: 'myown/.github/workflows'
-        destination_repo: 'project/.github/workflows'
-        destination_folder: 'workflows'
+        source_file: './.github/workflows/test.yml'
+        destination_repo: 'project'
+        destination_folder: 'project/.github/workflows/'
         user_email: 'ninanarmatha0389@gmail.com'
         user_name: 'sreesar'
         #commit_msg: '[GHA] Update the test files.'
