@@ -1,0 +1,22 @@
+name: Push File
+
+on: push
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test folder
+      uses: cp.yml/copy_folder_to_another_repo_action@1.0.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.PAT }}
+      with:
+        source_folder: 'myown/.github/workflows'
+        destination_repo: 'project/.github/workflows'
+        destination_folder: 'workflows'
+        user_email: 'ninanarmatha0389@gmail.com'
+        user_name: 'sreesar'
+        #commit_msg: '[GHA] Update the test files.'
