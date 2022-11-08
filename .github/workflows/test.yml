@@ -1,5 +1,5 @@
 name: Test
-workflow_run:
+
 on:
   - push
 jobs:
