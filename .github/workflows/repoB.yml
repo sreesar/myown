@@ -1,9 +1,10 @@
 name: Trigger automation tests
-steps:
-- uses: actions/github-script@v6
-  with:
-    github-token: ${{ secrets.PERSONAL_TOKEN }}
-    script: |
+on:
+ steps:
+ - uses: actions/github-script@v6
+    with:
+      github-token: ${{ secrets.PERSONAL_TOKEN }}
+      script: |
       await github.rest.actions.createWorkflowDispatch({
        owner: 'sreesar',
        repo: 'pr_triggered',
