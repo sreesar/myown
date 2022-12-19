@@ -1,7 +1,6 @@
 name: multiple os installation and versions
 on: 
   workflow_dispatch: {}
-
 jobs:
   example_matrix:
     strategy:
